@@ -31,6 +31,7 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
             width: width * 0.85,
             height: height * 0.5,
+            // child: Swiper(phy),
           ),
         ),
       ),

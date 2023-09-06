@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/model/model_quiz.dart';
+import 'package:flutter_application_1/screen/screen_result.dart';
 import 'package:flutter_application_1/widget/widget_candidate.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
@@ -22,7 +23,7 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     double width = screenSize.width;
-    double height = screenSize.height;
+    double height = screenSize.height * 1.3;    // 내가 임의로 수정함(화면에 다 안들어가서 에라떠서)
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.deepPurple,
@@ -106,6 +107,14 @@ class _QuizScreenState extends State<QuizScreen> {
                       ? null
                       : () {
                           if (_currentIndex == widget.quizzes.length - 1) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ResultScreen(
+                                answers: _answers,
+                                quizs: widget.quizzes
+                                )
+                              )
+                            );
                           } else {
                             _answerState = [false, false, false, false];
                             _currentIndex += 1;
